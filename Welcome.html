@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Bienvenida Mágica - YAGYA Kids ✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --indigo: #3d2b7a;
+            --indigo-light: #5a4a9e;
+            --gold: #d4af37;
+            --gold-light: #e8c547;
+            --dark: #0a0e27;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #3d2b7a 50%, #5a4a9e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: white;
+        }
+
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(61, 43, 122, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 2px solid var(--gold);
+            box-shadow: 0 0 60px rgba(212, 175, 55, 0.4);
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .magic-circle {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 2rem;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .magic-circle::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--gold);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .magic-circle::after {
+            content: '✨';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.6; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .loading-text {
+            font-size: 1.2rem;
+            margin: 2rem 0;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0.5; }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 2rem 0;
+            border: 1px solid var(--gold);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            border-radius: 10px;
+            animation: progress 3s ease-in-out;
+        }
+
+        @keyframes progress {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin: 2rem 0;
+            animation: slideUp 0.8s ease-out 0.4s both;
+        }
+
+        .message strong {
+            color: var(--gold);
+        }
+
+        .button-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            animation: slideUp 0.8s ease-out 0.6s both;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid var(--gold);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .sound-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--dark);
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .sound-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .sound-toggle.muted {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--gold);
+        }
+
+        .floating-particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .particle.star {
+            width: 2px;
+            height: 2px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: float-particle 6s infinite ease-in;
+        }
+
+        @keyframes float-particle {
+            to {
+                transform: translateY(-100vh) translateX(var(--tx));
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .container {
+                margin: 1rem;
+            }
+
+            .button-container {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="floating-particles" id="particles"></div>
+
+    <div class="container">
+        <div class="magic-circle"></div>
+        
+        <h1>✨ ¡Bienvenida Mágica! ✨</h1>
+        
+        <div class="subtitle">Tu libro está preparándose con magia...</div>
+
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+
+        <div class="loading-text" id="status">Activando frecuencias mágicas 432 Hz...</div>
+
+        <div class="message">
+            <p>Estamos preparando <strong id="nombre-nino">tu</strong> libro personalizado...</p>
+            <p>🎵 Música mágica de sanación activada 🎵</p>
+        </div>
+
+        <div class="button-container">
+            <button class="btn btn-primary" id="download-btn" style="display: none;" onclick="descargarPDF()">
+                📥 Descargar Mi Libro
+            </button>
+            <button class="btn btn-secondary" onclick="irAHome()">
+                🏠 Volver al Inicio
+            </button>
+        </div>
+    </div>
+
+    <button class="sound-toggle" id="sound-toggle" onclick="toggleSound()">🔊</button>
+
+    <script>
+        function crearEstrellasAleatorias() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        function crearPartículas() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle star';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.bottom = Math.random() * 100 + '%';
+                particle.style.setProperty('--tx', (Math.random() - 0.5) * 100 + 'px');
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        let isPlaying = false;
+        let oscillators = [];
+
+        function crearMúsicaMágica432Hz() {
+            try {
+                oscillators.forEach(osc => {
+                    try { osc.stop(); } catch (e) {}
+                });
+                oscillators = [];
+
+                const frecuencias = [432, 216, 864, 528];
+                frecuencias.forEach((freq, index) => {
+                    const oscillator = audioContext.createOscillator();
+                    const gain = audioContext.createGain();
+                    
+                    oscillator.frequency.value = freq;
+                    oscillator.type = index % 2 === 0 ? 'sine' : 'triangle';
+                    
+                    gain.gain.setValueAtTime(0, audioContext.currentTime);
+                    gain.gain.linearRampToValueAtTime(0.1, audioContext.currentTime + 0.5);
+                    gain.gain.linearRampToValueAtTime(0.05, audioContext.currentTime + 30);
+                    
+                    oscillator.connect(gain);
+                    gain.connect(audioContext.destination);
+                    
+                    oscillator.start(audioContext.currentTime);
+                    oscillators.push(oscillator);
+                });
+
+                isPlaying = true;
+                actualizarBotonSonido();
+            } catch (error) {
+                console.log('Audio después de interacción del usuario');
+            }
+        }
+
+        function toggleSound() {
+            if (isPlaying) {
+                detenerMúsica();
+            } else {
+                crearMúsicaMágica432Hz();
+            }
+        }
+
+        function detenerMúsica() {
+            oscillators.forEach(osc => {
+                try { osc.stop(); } catch (e) {}
+            });
+            oscillators = [];
+            isPlaying = false;
+            actualizarBotonSonido();
+        }
+
+        function actualizarBotonSonido() {
+            const btn = document.getElementById('sound-toggle');
+            if (isPlaying) {
+                btn.textContent = '🔊';
+                btn.classList.remove('muted');
+            } else {
+                btn.textContent = '🔇';
+                btn.classList.add('muted');
+            }
+        }
+
+        function simularCarga() {
+            const states = [
+                'Sintonizando frecuencias mágicas...',
+                'Personalizando contenido...',
+                'Agregando ilustraciones...',
+                'Grabando rituales...',
+                'Añadiendo tu esencia...',
+                '¡Casi listo!'
+            ];
+
+            let index = 0;
+            const interval = setInterval(() => {
+                document.getElementById('status').textContent = states[index];
+                index++;
+
+                if (index >= states.length) {
+                    clearInterval(interval);
+                    finalizarCarga();
+                }
+            }, 500);
+        }
+
+        function finalizarCarga() {
+            document.getElementById('status').textContent = '✨ ¡Tu libro está listo! ✨';
+            document.getElementById('download-btn').style.display = 'inline-block';
+            
+            setTimeout(() => {
+                crearMúsicaMágica432Hz();
+            }, 1000);
+        }
+
+        function descargarPDF() {
+            const link = document.createElement('a');
+            link.href = 'data:text/plain,Tu libro YAGYA Kids está en preparación...';
+            link.download = 'Mi-Libro-YAGYA-Kids.pdf';
+            link.click();
+
+            const btn = document.getElementById('download-btn');
+            btn.textContent = '✅ ¡Descargado!';
+            setTimeout(() => {
+                btn.textContent = '📥 Descargar Mi Libro';
+            }, 3000);
+        }
+
+        function irAHome() {
+            detenerMúsica();
+            window.location.href = 'https://yagyakids.netlify.app';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            crearEstrellasAleatorias();
+            crearPartículas();
+            simularCarga();
+
+            const params = new URLSearchParams(window.location.search);
+            const nombre = params.get('nombre') || 'tu';
+            document.getElementById('nombre-nino').textContent = nombre;
+        });
+
+        document.addEventListener('click', () => {
+            if (!isPlaying) {
+                crearMúsicaMágica432Hz();
+            }
+        }, { once: true });
+    </script>
+</body>
+</html>
