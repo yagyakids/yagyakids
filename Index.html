@@ -31,7 +31,6 @@
             overflow-x: hidden;
         }
 
-        /* HEADER */
         header {
             background: linear-gradient(135deg, var(--gold) 0%, var(--purple) 100%);
             color: white;
@@ -69,7 +68,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* HERO SECTION */
         .hero {
             max-width: 1200px;
             margin: 4rem auto;
@@ -119,7 +117,6 @@
             box-shadow: 0 30px 80px rgba(199,125,255,0.3);
         }
 
-        /* PRODUCTOS */
         .productos {
             max-width: 1200px;
             margin: 5rem auto;
@@ -239,7 +236,6 @@
             background: #0080b5;
         }
 
-        /* CARACTERÍSTICAS */
         .caracteristicas {
             max-width: 1200px;
             margin: 5rem auto;
@@ -293,7 +289,6 @@
             line-height: 1.6;
         }
 
-        /* TESTIMONIOS */
         .testimonios {
             background: linear-gradient(135deg, var(--gold) 0%, var(--purple) 100%);
             padding: 4rem 2rem;
@@ -337,7 +332,6 @@
             font-size: 0.95rem;
         }
 
-        /* CTA FINAL */
         .cta-final {
             background: white;
             max-width: 800px;
@@ -363,7 +357,6 @@
             line-height: 1.6;
         }
 
-        /* FOOTER */
         footer {
             background: var(--dark);
             color: white;
@@ -387,7 +380,6 @@
             color: var(--purple);
         }
 
-        /* MODAL */
         .modal {
             display: none;
             position: fixed;
@@ -468,7 +460,6 @@
             box-shadow: 0 0 0 3px rgba(199,125,255,0.1);
         }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2rem;
@@ -506,15 +497,204 @@
     </style>
 </head>
 <body>
-    <!-- HEADER -->
     <header>
         <h1>✨ YAGYA KIDS ✨</h1>
         <p>Libros Mágicos para Niños Conscientes</p>
     </header>
 
-    <!-- HERO -->
     <section class="hero">
         <div class="hero-text">
             <h2>El Poder Interior de tu Hijo</h2>
             <p>Una colección de libros personalizados diseñados para ayudar a tu hijo a conectar con su poder interior, desarrollar confianza, inteligencia emocional y seguridad en sí mismo.</p>
-            <p>Cada página lleva su nombre​​​​​​​​​​​​​​​​
+            <p>Cada página lleva su nombre. Cada palabra fue escrita pensando en él.</p>
+            <button class="btn" onclick="openModal('modal-compra')">Explorar Colección</button>
+        </div>
+        <div class="book-showcase">
+            <img src="https://via.placeholder.com/400x500/d4a574/ffffff?text=Niños+con+Poder+Interior" alt="Portada del libro" class="book-image">
+        </div>
+    </section>
+
+    <section class="productos">
+        <h2>Nuestra Colección</h2>
+        <div class="grid-productos">
+            <div class="producto">
+                <div class="producto-header">
+                    <div class="producto-icon">📖</div>
+                    <h3>PDF Personalizado</h3>
+                </div>
+                <div class="producto-body">
+                    <p style="color: var(--purple); font-weight: 600;">Descarga Digital</p>
+                    <ul>
+                        <li>Contenido completo personalizado</li>
+                        <li>Con nombre de tu hijo</li>
+                        <li>Ilustraciones premium</li>
+                        <li>Descarga inmediata</li>
+                    </ul>
+                    <div class="precio">$299 MXN</div>
+                    <button class="btn" onclick="abrirMercadoPago(299, 'PDF Personalizado')">Pagar con Mercado Pago</button>
+                    <button class="btn" onclick="openModal('modal-compra')" style="background: #666;">Más Información</button>
+                </div>
+            </div>
+
+            <div class="producto">
+                <div class="producto-header">
+                    <div class="producto-icon">🎁</div>
+                    <h3>Colección Completa</h3>
+                </div>
+                <div class="producto-body">
+                    <p style="color: var(--purple); font-weight: 600;">Todos los Libros</p>
+                    <ul>
+                        <li>4 libros personalizados</li>
+                        <li>Contenido completo</li>
+                        <li>Ilustraciones premium</li>
+                        <li>Acceso de por vida</li>
+                    </ul>
+                    <div class="precio">$999 MXN</div>
+                    <button class="btn btn-mercado" onclick="abrirMercadoPago(999, 'Colección Completa')">Pagar con Mercado Pago</button>
+                    <button class="btn" onclick="openModal('modal-compra')" style="background: #666;">Más Información</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="caracteristicas">
+        <h2>¿Por qué YAGYA Kids?</h2>
+        <div class="grid-caracteristicas">
+            <div class="caracteristica">
+                <div class="caracteristica-icon">✨</div>
+                <h3>100% Personalizado</h3>
+                <p>Cada página lleva el nombre de tu hijo. Cada palabra fue escrita para él.</p>
+            </div>
+            <div class="caracteristica">
+                <div class="caracteristica-icon">❤️</div>
+                <h3>Emocional Real</h3>
+                <p>Lenguaje auténtico que habla al corazón. Sin tono infantil condescendiente.</p>
+            </div>
+            <div class="caracteristica">
+                <div class="caracteristica-icon">🎯</div>
+                <h3>Basado en Conexión</h3>
+                <p>Desarrolla intuición, confianza y conexión con su poder interior.</p>
+            </div>
+            <div class="caracteristica">
+                <div class="caracteristica-icon">🏆</div>
+                <h3>Estética Premium</h3>
+                <p>Parece un libro de editorial grande. Ilustraciones de calidad profesional.</p>
+            </div>
+            <div class="caracteristica">
+                <div class="caracteristica-icon">🌟</div>
+                <h3>Ritual Incluido</h3>
+                <p>Ritual mágico que el niño puede practicar todos los días (guía completa en el libro).</p>
+            </div>
+            <div class="caracteristica">
+                <div class="caracteristica-icon">💎</div>
+                <h3>Marca Diferenciada</h3>
+                <p>No hay nada igual en el mercado. Potencial viral de marca fuerte.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonios">
+        <div class="testimonios-content">
+            <h2>Qué dicen las Familias</h2>
+            <div class="grid-testimonios">
+                <div class="testimonio">
+                    <p>"Mi hijo no suelta el libro. Lee una página cada noche antes de dormir y dice que se siente más fuerte."</p>
+                    <p class="testimonio-autor">— Gabriela M., CDMX</p>
+                </div>
+                <div class="testimonio">
+                    <p>"Es perfecto. No creí que fuera tan bonito ver su nombre en cada página. Lloré."</p>
+                    <p class="testimonio-autor">— Carlos R., Monterrey</p>
+                </div>
+                <div class="testimonio">
+                    <p>"Mis amigos quieren para sus hijos también. ¡Es el regalo perfecto!"</p>
+                    <p class="testimonio-autor">— Andrea L., Guadalajara</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-final">
+        <h2>Tu Hijo Merece Esto</h2>
+        <p>No es solo un libro. Es un espacio mágico donde tu hijo descubre que dentro de él vive un ser fuerte, inteligente y digno de confianza.</p>
+        <button class="btn" onclick="openModal('modal-compra')" style="max-width: 300px;">Comenzar Ahora</button>
+    </section>
+
+    <footer>
+        <p>© 2024 YAGYA Kids - Libros Mágicos para Niños Conscientes</p>
+        <p>✨ Crianza Consciente | Libros Personalizados | Poder Interior ✨</p>
+        <p>Contacto: <a href="mailto:yagyakids@gmail.com">yagyakids@gmail.com</a></p>
+    </footer>
+
+    <div id="modal-compra" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-compra')">&times;</span>
+            <h2>¿Listo para empezar?</h2>
+            <form onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="nombre-nino">Nombre de tu hijo/a:</label>
+                    <input type="text" id="nombre-nino" required placeholder="Ej: Luciano">
+                </div>
+                <div class="form-group">
+                    <label for="edad">Edad:</label>
+                    <input type="number" id="edad" required placeholder="Ej: 6" min="3" max="12">
+                </div>
+                <div class="form-group">
+                    <label for="email">Tu email:</label>
+                    <input type="email" id="email" required placeholder="tu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono (WhatsApp):</label>
+                    <input type="tel" id="telefono" required placeholder="+52 1234567890">
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">¿Cuál producto te interesa?</label>
+                    <textarea id="mensaje" rows="3" placeholder="PDF Personalizado / Colección Completa"></textarea>
+                </div>
+                <button type="submit" class="btn">Enviar mi Solicitud</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const mp = new MercadoPago('APP_USR-12345678-full-access', {
+            locale: 'es-MX'
+        });
+
+        function abrirMercadoPago(monto, producto) {
+            alert(`Producto: ${producto}\nMonto: $${monto} MXN\n\nSerás redirigido a Mercado Pago para completar el pago.`);
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            const nombreNino = document.getElementById('nombre-nino').value;
+            const email = document.getElementById('email').value;
+            const telefono = document.getElementById('telefono').value;
+
+            alert(`¡Hola! Recibimos tu solicitud para ${nombreNino}.\n\nNos contactaremos en: ${email}\nTeléfono: ${telefono}\n\n¡Gracias por elegir YAGYA Kids! 💜`);
+            
+            closeModal('modal-compra');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
