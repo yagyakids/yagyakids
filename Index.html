@@ -13,11 +13,13 @@
         }
 
         :root {
-            --gold: #d4a574;
-            --purple: #c77dff;
-            --dark: #1a1a1a;
-            --light: #f9f7f4;
-            --cream: #fef8f3;
+            --indigo: #3d2b7a;
+            --indigo-light: #5a4a9e;
+            --gold: #d4af37;
+            --gold-light: #e8c547;
+            --dark: #0a0e27;
+            --light: #f5f3ff;
+            --white: #ffffff;
         }
 
         html {
@@ -27,45 +29,61 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: var(--dark);
-            background: linear-gradient(135deg, #fef8f3 0%, #f3e8ff 100%);
+            background: linear-gradient(135deg, #f5f3ff 0%, #e8deff 50%, #d4c5ff 100%);
             overflow-x: hidden;
         }
 
         header {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--purple) 100%);
+            background: linear-gradient(135deg, var(--indigo) 0%, var(--indigo-light) 100%);
             color: white;
-            padding: 2rem;
-            text-align: center;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 40px rgba(61, 43, 122, 0.3);
         }
 
-        header h1 {
-            font-size: 3rem;
+        .header-left h1 {
+            font-size: 2rem;
             font-weight: 700;
             letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            animation: fadeInDown 0.8s ease-out;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        header p {
-            font-size: 1.3rem;
-            font-weight: 300;
-            opacity: 0.95;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
+        .header-left p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 0.3rem;
         }
 
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .carrito-icon {
+            position: relative;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .carrito-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .carrito-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--gold);
+            color: var(--dark);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
         }
 
         .hero {
@@ -79,9 +97,9 @@
         }
 
         .hero-text h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--gold), var(--purple));
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1.2;
@@ -91,7 +109,8 @@
             font-size: 1.1rem;
             line-height: 1.8;
             margin-bottom: 2rem;
-            color: #555;
+            color: var(--indigo);
+            font-weight: 500;
         }
 
         .book-showcase {
@@ -106,15 +125,16 @@
         .book-image {
             max-width: 100%;
             max-height: 100%;
-            border-radius: 15px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-            transform: perspective(1000px) rotateY(-5deg);
-            transition: all 0.3s ease;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(61, 43, 122, 0.4);
+            transform: perspective(1000px) rotateY(-8deg) rotateX(2deg);
+            transition: all 0.4s ease;
+            border: 3px solid var(--gold);
         }
 
         .book-image:hover {
-            transform: perspective(1000px) rotateY(0deg) translateY(-10px);
-            box-shadow: 0 30px 80px rgba(199,125,255,0.3);
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(-15px);
+            box-shadow: 0 40px 100px rgba(212, 175, 55, 0.5);
         }
 
         .productos {
@@ -124,66 +144,114 @@
         }
 
         .productos h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             text-align: center;
-            margin-bottom: 3rem;
-            background: linear-gradient(135deg, var(--gold), var(--purple));
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
+        .productos-subtitle {
+            text-align: center;
+            color: var(--indigo);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
         .grid-productos {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2.5rem;
         }
 
         .producto {
             background: white;
-            border-radius: 12px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            border: 1px solid #f0e6ff;
+            box-shadow: 0 15px 40px rgba(61, 43, 122, 0.15);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .producto::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--indigo-light));
         }
 
         .producto:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(199,125,255,0.2);
-            border-color: var(--purple);
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(61, 43, 122, 0.25);
+            border-color: var(--gold);
         }
 
         .producto-header {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--purple) 100%);
-            padding: 2rem;
+            background: linear-gradient(135deg, var(--indigo) 0%, var(--indigo-light) 100%);
+            padding: 2.5rem 2rem;
             color: white;
             text-align: center;
-            min-height: 120px;
+            min-height: 140px;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .producto-header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
         }
 
         .producto-header h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
         }
 
         .producto-icon {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
         }
 
         .producto-body {
             padding: 2rem;
         }
 
-        .producto-body ul {
+        .resena {
+            background: linear-gradient(135deg, rgba(61, 43, 122, 0.05), rgba(212, 175, 55, 0.05));
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--gold);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #555;
+            font-style: italic;
+        }
+
+        .producto-features {
             list-style: none;
             margin: 1.5rem 0;
         }
 
-        .producto-body li {
+        .producto-features li {
             padding: 0.6rem 0;
             color: #666;
             font-size: 0.95rem;
@@ -191,17 +259,16 @@
             align-items: center;
         }
 
-        .producto-body li::before {
-            content: '✓';
+        .producto-features li::before {
+            content: '✨';
             color: var(--gold);
-            font-weight: bold;
             margin-right: 0.8rem;
             font-size: 1.1rem;
         }
 
         .precio {
-            font-size: 2rem;
-            color: var(--purple);
+            font-size: 2.2rem;
+            color: var(--indigo);
             font-weight: 700;
             margin: 1.5rem 0;
             text-align: center;
@@ -210,30 +277,49 @@
         .btn {
             width: 100%;
             padding: 1rem;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--purple) 100%);
+            background: linear-gradient(135deg, var(--indigo) 0%, var(--indigo-light) 100%);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 30px rgba(199,125,255,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(61, 43, 122, 0.4);
         }
 
-        .btn-mercado {
-            background: #009EE3;
+        .btn-carrito {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--dark);
+            font-weight: 700;
         }
 
-        .btn-mercado:hover {
-            background: #0080b5;
+        .btn-carrito:hover {
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
         }
 
         .caracteristicas {
@@ -246,7 +332,7 @@
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 3rem;
-            background: linear-gradient(135deg, var(--gold), var(--purple));
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -260,28 +346,28 @@
         .caracteristica {
             background: white;
             padding: 2rem;
-            border-radius: 12px;
+            border-radius: 15px;
             text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 20px rgba(61, 43, 122, 0.1);
             border-left: 4px solid var(--gold);
             transition: all 0.3s ease;
         }
 
         .caracteristica:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(199,125,255,0.15);
-            border-left-color: var(--purple);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(61, 43, 122, 0.2);
+            border-left-color: var(--indigo);
         }
 
         .caracteristica-icon {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 1rem;
         }
 
         .caracteristica h3 {
             font-size: 1.3rem;
             margin-bottom: 0.8rem;
-            color: var(--purple);
+            color: var(--indigo);
         }
 
         .caracteristica p {
@@ -290,7 +376,7 @@
         }
 
         .testimonios {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--purple) 100%);
+            background: linear-gradient(135deg, var(--indigo) 0%, var(--indigo-light) 100%);
             padding: 4rem 2rem;
             margin: 4rem 0;
             color: white;
@@ -305,6 +391,7 @@
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 3rem;
+            color: var(--gold);
         }
 
         .grid-testimonios {
@@ -314,11 +401,17 @@
         }
 
         .testimonio {
-            background: rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.1);
             backdrop-filter: blur(10px);
             padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 15px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .testimonio:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
         }
 
         .testimonio p {
@@ -330,6 +423,7 @@
         .testimonio-autor {
             font-weight: 600;
             font-size: 0.95rem;
+            color: var(--gold);
         }
 
         .cta-final {
@@ -337,24 +431,26 @@
             max-width: 800px;
             margin: 4rem auto;
             padding: 3rem;
-            border-radius: 15px;
+            border-radius: 20px;
             text-align: center;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            box-shadow: 0 25px 60px rgba(61, 43, 122, 0.2);
+            border: 2px solid var(--gold);
         }
 
         .cta-final h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--gold), var(--purple));
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .cta-final p {
             font-size: 1.1rem;
-            color: #666;
+            color: var(--indigo);
             margin-bottom: 2rem;
             line-height: 1.6;
+            font-weight: 500;
         }
 
         footer {
@@ -377,7 +473,7 @@
         }
 
         footer a:hover {
-            color: var(--purple);
+            color: var(--gold-light);
         }
 
         .modal {
@@ -390,6 +486,7 @@
             height: 100%;
             background-color: rgba(0,0,0,0.5);
             animation: fadeIn 0.3s ease;
+            overflow-y: auto;
         }
 
         @keyframes fadeIn {
@@ -401,11 +498,12 @@
             background-color: white;
             margin: 5% auto;
             padding: 2rem;
-            border-radius: 15px;
+            border-radius: 20px;
             width: 90%;
-            max-width: 500px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 600px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
             animation: slideUp 0.3s ease;
+            border-top: 5px solid var(--gold);
         }
 
         @keyframes slideUp {
@@ -414,7 +512,7 @@
         }
 
         .close-btn {
-            color: #aaa;
+            color: var(--indigo);
             float: right;
             font-size: 28px;
             font-weight: bold;
@@ -423,12 +521,52 @@
         }
 
         .close-btn:hover {
-            color: var(--purple);
+            color: var(--gold);
         }
 
         .modal h2 {
-            color: var(--purple);
+            color: var(--indigo);
             margin-bottom: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .carrito-item {
+            background: #f5f3ff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid var(--gold);
+        }
+
+        .carrito-item-info h4 {
+            color: var(--indigo);
+            margin-bottom: 0.3rem;
+        }
+
+        .carrito-item-precio {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .carrito-total {
+            text-align: right;
+            padding-top: 1rem;
+            border-top: 2px solid var(--gold);
+            margin-top: 1rem;
+        }
+
+        .carrito-total h3 {
+            color: var(--indigo);
+        }
+
+        .carrito-total-price {
+            color: var(--gold);
+            font-size: 1.8rem;
+            font-weight: 700;
         }
 
         .form-group {
@@ -440,29 +578,33 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
-            color: var(--dark);
+            color: var(--indigo);
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
             padding: 0.8rem;
-            border: 2px solid #ddd;
+            border: 2px solid var(--gold);
             border-radius: 8px;
             font-size: 1rem;
-            transition: border-color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--purple);
-            box-shadow: 0 0 0 3px rgba(199,125,255,0.1);
+            border-color: var(--indigo);
+            box-shadow: 0 0 0 3px rgba(61, 43, 122, 0.1);
         }
 
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
+            header {
+                flex-direction: row;
+            }
+
+            .header-left h1 {
+                font-size: 1.5rem;
             }
 
             .hero {
@@ -471,7 +613,7 @@
             }
 
             .hero-text h2 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
 
             .book-showcase {
@@ -498,24 +640,31 @@
 </head>
 <body>
     <header>
-        <h1>✨ YAGYA KIDS ✨</h1>
-        <p>Libros Mágicos para Niños Conscientes</p>
+        <div class="header-left">
+            <h1>✨ YAGYA KIDS ✨</h1>
+            <p>Libros Mágicos para Niños Conscientes</p>
+        </div>
+        <div class="carrito-icon" onclick="openModal('modal-carrito')">
+            🛒
+            <span class="carrito-count" id="carrito-count">0</span>
+        </div>
     </header>
 
     <section class="hero">
         <div class="hero-text">
             <h2>El Poder Interior de tu Hijo</h2>
             <p>Una colección de libros personalizados diseñados para ayudar a tu hijo a conectar con su poder interior, desarrollar confianza, inteligencia emocional y seguridad en sí mismo.</p>
-            <p>Cada página lleva su nombre. Cada palabra fue escrita pensando en él.</p>
-            <button class="btn" onclick="openModal('modal-compra')">Explorar Colección</button>
+            <p style="font-weight: 600; color: var(--gold);">Cada página lleva su nombre. Cada palabra fue escrita pensando en él. ✨</p>
+            <button class="btn" onclick="document.querySelector('.productos').scrollIntoView({behavior: 'smooth'})">Explorar Colección</button>
         </div>
         <div class="book-showcase">
-            <img src="https://via.placeholder.com/400x500/d4a574/ffffff?text=Niños+con+Poder+Interior" alt="Portada del libro" class="book-image">
+            <img src="https://via.placeholder.com/400x550/3d2b7a/d4af37?text=Poder+Interior" alt="Portada del libro" class="book-image">
         </div>
     </section>
 
     <section class="productos">
-        <h2>Nuestra Colección</h2>
+        <h2>✨ Nuestra Colección ✨</h2>
+        <p class="productos-subtitle">Historias mágicas que transforman vidas desde adentro</p>
         <div class="grid-productos">
             <div class="producto">
                 <div class="producto-header">
@@ -523,178 +672,13 @@
                     <h3>PDF Personalizado</h3>
                 </div>
                 <div class="producto-body">
-                    <p style="color: var(--purple); font-weight: 600;">Descarga Digital</p>
-                    <ul>
-                        <li>Contenido completo personalizado</li>
-                        <li>Con nombre de tu hijo</li>
-                        <li>Ilustraciones premium</li>
-                        <li>Descarga inmediata</li>
-                    </ul>
-                    <div class="precio">$299 MXN</div>
-                    <button class="btn" onclick="abrirMercadoPago(299, 'PDF Personalizado')">Pagar con Mercado Pago</button>
-                    <button class="btn" onclick="openModal('modal-compra')" style="background: #666;">Más Información</button>
-                </div>
-            </div>
-
-            <div class="producto">
-                <div class="producto-header">
-                    <div class="producto-icon">🎁</div>
-                    <h3>Colección Completa</h3>
-                </div>
-                <div class="producto-body">
-                    <p style="color: var(--purple); font-weight: 600;">Todos los Libros</p>
-                    <ul>
-                        <li>4 libros personalizados</li>
-                        <li>Contenido completo</li>
-                        <li>Ilustraciones premium</li>
+                    <div class="resena">
+                        "Un viaje mágico donde tu hijo descubre que dentro de él vive un ser fuerte, inteligente y valiente. A través de historias, ejercicios y rituales, conectará con su poder interior y aprenderá a confiar en sí mismo en cualquier situación."
+                    </div>
+                    <ul class="producto-features">
+                        <li>Contenido completo personalizado con su nombre</li>
+                        <li>Ilustraciones premium estilo cuento</li>
+                        <li>7 lecciones mágicas + ritual diario</li>
+                        <li>Descarga inmediata en PDF</li>
                         <li>Acceso de por vida</li>
                     </ul>
-                    <div class="precio">$999 MXN</div>
-                    <button class="btn btn-mercado" onclick="abrirMercadoPago(999, 'Colección Completa')">Pagar con Mercado Pago</button>
-                    <button class="btn" onclick="openModal('modal-compra')" style="background: #666;">Más Información</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="caracteristicas">
-        <h2>¿Por qué YAGYA Kids?</h2>
-        <div class="grid-caracteristicas">
-            <div class="caracteristica">
-                <div class="caracteristica-icon">✨</div>
-                <h3>100% Personalizado</h3>
-                <p>Cada página lleva el nombre de tu hijo. Cada palabra fue escrita para él.</p>
-            </div>
-            <div class="caracteristica">
-                <div class="caracteristica-icon">❤️</div>
-                <h3>Emocional Real</h3>
-                <p>Lenguaje auténtico que habla al corazón. Sin tono infantil condescendiente.</p>
-            </div>
-            <div class="caracteristica">
-                <div class="caracteristica-icon">🎯</div>
-                <h3>Basado en Conexión</h3>
-                <p>Desarrolla intuición, confianza y conexión con su poder interior.</p>
-            </div>
-            <div class="caracteristica">
-                <div class="caracteristica-icon">🏆</div>
-                <h3>Estética Premium</h3>
-                <p>Parece un libro de editorial grande. Ilustraciones de calidad profesional.</p>
-            </div>
-            <div class="caracteristica">
-                <div class="caracteristica-icon">🌟</div>
-                <h3>Ritual Incluido</h3>
-                <p>Ritual mágico que el niño puede practicar todos los días (guía completa en el libro).</p>
-            </div>
-            <div class="caracteristica">
-                <div class="caracteristica-icon">💎</div>
-                <h3>Marca Diferenciada</h3>
-                <p>No hay nada igual en el mercado. Potencial viral de marca fuerte.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonios">
-        <div class="testimonios-content">
-            <h2>Qué dicen las Familias</h2>
-            <div class="grid-testimonios">
-                <div class="testimonio">
-                    <p>"Mi hijo no suelta el libro. Lee una página cada noche antes de dormir y dice que se siente más fuerte."</p>
-                    <p class="testimonio-autor">— Gabriela M., CDMX</p>
-                </div>
-                <div class="testimonio">
-                    <p>"Es perfecto. No creí que fuera tan bonito ver su nombre en cada página. Lloré."</p>
-                    <p class="testimonio-autor">— Carlos R., Monterrey</p>
-                </div>
-                <div class="testimonio">
-                    <p>"Mis amigos quieren para sus hijos también. ¡Es el regalo perfecto!"</p>
-                    <p class="testimonio-autor">— Andrea L., Guadalajara</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-final">
-        <h2>Tu Hijo Merece Esto</h2>
-        <p>No es solo un libro. Es un espacio mágico donde tu hijo descubre que dentro de él vive un ser fuerte, inteligente y digno de confianza.</p>
-        <button class="btn" onclick="openModal('modal-compra')" style="max-width: 300px;">Comenzar Ahora</button>
-    </section>
-
-    <footer>
-        <p>© 2024 YAGYA Kids - Libros Mágicos para Niños Conscientes</p>
-        <p>✨ Crianza Consciente | Libros Personalizados | Poder Interior ✨</p>
-        <p>Contacto: <a href="mailto:yagyakids@gmail.com">yagyakids@gmail.com</a></p>
-    </footer>
-
-    <div id="modal-compra" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-compra')">&times;</span>
-            <h2>¿Listo para empezar?</h2>
-            <form onsubmit="handleSubmit(event)">
-                <div class="form-group">
-                    <label for="nombre-nino">Nombre de tu hijo/a:</label>
-                    <input type="text" id="nombre-nino" required placeholder="Ej: Luciano">
-                </div>
-                <div class="form-group">
-                    <label for="edad">Edad:</label>
-                    <input type="number" id="edad" required placeholder="Ej: 6" min="3" max="12">
-                </div>
-                <div class="form-group">
-                    <label for="email">Tu email:</label>
-                    <input type="email" id="email" required placeholder="tu@email.com">
-                </div>
-                <div class="form-group">
-                    <label for="telefono">Teléfono (WhatsApp):</label>
-                    <input type="tel" id="telefono" required placeholder="+52 1234567890">
-                </div>
-                <div class="form-group">
-                    <label for="mensaje">¿Cuál producto te interesa?</label>
-                    <textarea id="mensaje" rows="3" placeholder="PDF Personalizado / Colección Completa"></textarea>
-                </div>
-                <button type="submit" class="btn">Enviar mi Solicitud</button>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        const mp = new MercadoPago('APP_USR-12345678-full-access', {
-            locale: 'es-MX'
-        });
-
-        function abrirMercadoPago(monto, producto) {
-            alert(`Producto: ${producto}\nMonto: $${monto} MXN\n\nSerás redirigido a Mercado Pago para completar el pago.`);
-        }
-
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        window.onclick = function(event) {
-            const modals = document.querySelectorAll('.modal');
-            modals.forEach(modal => {
-                if (event.target == modal) {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
-        }
-
-        function handleSubmit(event) {
-            event.preventDefault();
-            const nombreNino = document.getElementById('nombre-nino').value;
-            const email = document.getElementById('email').value;
-            const telefono = document.getElementById('telefono').value;
-
-            alert(`¡Hola! Recibimos tu solicitud para ${nombreNino}.\n\nNos contactaremos en: ${email}\nTeléfono: ${telefono}\n\n¡Gracias por elegir YAGYA Kids! 💜`);
-            
-            closeModal('modal-compra');
-            event.target.reset();
-        }
-    </script>
-</body>
-</html>
